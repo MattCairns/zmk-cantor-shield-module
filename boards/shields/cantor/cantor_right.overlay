@@ -7,5 +7,5 @@
 #include "cantor.dtsi"
 
 &default_transform {
-	col-offset = <21>;
+    col-offset = <21>;
 };
