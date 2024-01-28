@@ -35,7 +35,7 @@ RC(0,12) RC(0,13) RC(0,14) RC(0,15) RC(0,16) RC(0,17)  RC(0,38) RC(0,37) RC(0,36
             , <&blackpill 27 MODE> 
             , <&blackpill 26 MODE> 
             , <&blackpill 46 MODE> 
-            , <&blackpill 47 MODE> 
+            , <&blackpill 45 MODE> 
             , <&blackpill 41 MODE> 
             , <&blackpill 40 MODE> 
             , <&blackpill 39 MODE> 
