@@ -10,16 +10,63 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+    keymap {
 
-                default_layer {
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &kp A &kp SPACE   &kp RET &kp A &kp RALT
-                        >;
-                };
+        compatible = "zmk,keymap";
+
+        base {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+            //   &kp TAB       &kp Q    &kp W     &kp E    &kp R     &kp T        &kp Y    &kp U   &kp I     &kp O   &kp P      &kp BSLH 
+            //   &kp LC(ESC)   &lt 1 A  &lt 2 S   &kp D    &kp F     &kp G        &kp H    &kp J   &kp K     &lt 2 L &lt 1 SEMI &kp RC(SQT)
+            //   &kp LSHFT     &kp Z    &kp X     &kp C    &kp V     &kp B        &kp N    &kp M   &kp COMMA &kp DOT &kp FSLH   &kp MINUS 
+            //                                    &kp LGUI &kp SPACE &kp LGUI     &kp BSPC &kp ENT &kp RALT
+
+            bindings = <
+&none      &kp Q  &kp W  &kp E        &kp R        &kp T       &kp Y     &kp U        &kp I      &kp O    &kp P          &kp BACKSLASH
+&kp LCTRL  &kp A  &kp S  &kp D        &kp F        &kp G       &kp H     &kp J        &kp K      &kp L    &kp SEMICOLON  &mt RCTRL SINGLE_QUOTE
+&kp LSHFT  &kp Z  &kp X  &kp C        &kp V        &kp B       &kp N     &kp M        &kp COMMA  &kp DOT  &kp FSLH       &kp MINUS
+                         &lt 1 RCTRL  &lt 2 SPACE  &kp LGUI    &kp BSPC  &lt 1 ENTER  &kp RALT
+            >;
+
+            label = "base";
         };
+
+        symbols {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            bindings = <
+&none  &kp EXCLAMATION  &kp AT_SIGN  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE     &kp DELETE     &out OUT_TOG  &none         &none         &none         &none
+&none  &kp HASH         &kp DOLLAR   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE    &kp LEFT       &kp DOWN      &kp UP        &kp RIGHT     &none         &bt BT_CLR
+&none  &kp AMPERSAND    &kp CARET    &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp TILDE    &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
+                                     &kp LGUI              &trans                 &kp SPACE    &kp BACKSPACE  &kp DOT       &kp RALT
+            >;
+
+            label = "sym";
+        };
+
+        numbers {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            bindings = <
+&none      &none  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &none       &none     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS     &none
+&none      &none  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &none       &none     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL     &none
+&kp LSHFT  &none  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &none       &none     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_0  &kp RSHFT
+                                    &kp LGUI          &kp SPACE         &kp LGUI    &kp BSPC  &kp DOT       &kp RALT
+            >;
+
+            label = "num";
+        };
+    };
 };
