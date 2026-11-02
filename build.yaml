@@ -18,7 +18,7 @@
 #
 ---
 include:
-  - board: pillbug
+  - board: pillbug//zmk
     shield: cantor_left
-  - board: pillbug
+  - board: pillbug//zmk
     shield: cantor_right
